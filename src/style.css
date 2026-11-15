@@ -85,8 +85,6 @@ nav a.l:hover { color: var(--ink); }
   border-radius: 999px; /* huge radius = pill shape */
   padding: .35rem .8rem; font: 500 .85rem "DM Sans", sans-serif; cursor: pointer;
 }
-/* On small screens (640px wide or less) hide the text links to save space */
-@media (max-width: 640px) { nav a.l { display: none; } }
 
 /* =========================================================
    4. HERO
@@ -214,4 +212,27 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: .9rem; border-top
   aspect-ratio: 4 / 3; 
   object-fit: contain; 
   background: var(--bg); 
+}
+
+/* ===== MOBILE FIXES ===== */
+img { max-width: 100%; }                 /* images never grow wider than their box */
+.navlinks { display: flex; gap: 1.25rem; }
+
+@media (max-width: 640px) {
+  /* Nav: logo and Theme button on row 1, links on row 2 */
+  nav { flex-wrap: wrap; height: auto; padding: .6rem 0; row-gap: .4rem; }
+  .navlinks { order: 3; width: 100%; justify-content: space-between; }
+  nav a.l { font-size: .9rem; }
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 110px); } /* taller header now */
+
+  /* Less empty space */
+  .hero { padding: 3.5rem 0 3.5rem; }
+  section { padding: 3rem 0; }
+  .wrap { padding: 0 1.1rem; }
+  .card { padding: 1.25rem; }
+  .card h3 { font-size: 1.35rem; }
+
+  /* Buttons fill the width so they're easy to tap, and long text wraps instead of overflowing */
+  .btns, .links { flex-direction: column; }
+  .btn { text-align: center; overflow-wrap: anywhere; }
 }

@@ -19,12 +19,12 @@
     <div class="wrap">
       <nav>
         <a class="mark" href="#top">Iori Yamauchi</a>
-        <!-- href="#about" jumps to the element with id="about" -->
-        <a class="l" href="#about">About</a>
-        <a class="l" href="#projects">Projects</a>
-        <a class="l" href="#skills">Skills</a>
-        <a class="l" href="#contact">Contact</a>
-        <!-- main.js listens for clicks on this button (id="theme") -->
+        <div class="navlinks">
+          <a class="l" href="#about">About</a>
+          <a class="l" href="#projects">Projects</a>
+          <a class="l" href="#skills">Skills</a>
+          <a class="l" href="#contact">Contact</a>
+        </div>
         <button id="theme" type="button" aria-label="Switch between light and dark theme">Theme</button>
       </nav>
     </div>
@@ -158,9 +158,11 @@
         <div class="links">
           <!-- mailto: opens the visitor's email app. target="_blank" opens links in a new tab;
                rel="noopener" is a security best practice for those links -->
-          <a class="btn p" href="mailto:ioriyamauchi24@gmail.com">ioriyamauchi24@gmail.com</a>
+          <a class="btn p" href="mailto:ioriyamauchi24@gmail.com?subject=OJT%20Inquiry">ioriyamauchi24@gmail.com</a>
           <a class="btn" href="https://www.linkedin.com/in/yamauchi-iori-v-441b7334b" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://github.com/Warlocked-tech" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="/iori-yamauchi-resume.pdf" target="_blank" rel="noopener">View resume (PDF)</a>
+          <p class="muted">Or copy my email: ioriyamauchi24@gmail.com</p>
         </div>
       </div>
     </section>
