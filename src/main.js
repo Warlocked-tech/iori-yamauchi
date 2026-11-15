@@ -74,3 +74,26 @@ bubbles.forEach((b) => {
   el.style.animationDelay = b.delay + 's';
   bubbleBox.appendChild(el); // put it on the page
 });
+
+// ---------- 4) COPY EMAIL BUTTON ----------
+const EMAIL = 'ioriyamauchi24@gmail.com';
+const copyBtn = document.getElementById('copy-email');
+
+copyBtn.addEventListener('click', async () => {
+  try {
+    // Modern way to copy text. It only works on HTTPS pages (like Vercel) and on localhost.
+    await navigator.clipboard.writeText(EMAIL);
+  } catch (e) {
+    // Backup for older browsers: put the text in a hidden box, select it, and copy it
+    const box = document.createElement('textarea');
+    box.value = EMAIL;
+    document.body.appendChild(box);
+    box.select();
+    document.execCommand('copy');
+    box.remove();
+  }
+
+  // Give the visitor feedback, then switch back to the email after 2 seconds
+  copyBtn.textContent = 'Copied!';
+  setTimeout(() => { copyBtn.textContent = EMAIL; }, 2000);
+});

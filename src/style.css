@@ -236,3 +236,11 @@ img { max-width: 100%; }                 /* images never grow wider than their b
   .btns, .links { flex-direction: column; }
   .btn { text-align: center; overflow-wrap: anywhere; }
 }
+
+/* Makes <button class="btn"> match the <a class="btn"> links */
+button.btn { 
+  font: inherit; 
+  font-weight: 700; 
+  line-height: inherit; 
+  cursor: pointer; 
+}
