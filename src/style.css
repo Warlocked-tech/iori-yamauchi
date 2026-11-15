@@ -1,40 +1,36 @@
 /* =========================================================
-   1. COLOR THEMES
-   CSS variables (--name) store values once so we can reuse them
-   everywhere with var(--name). Change a color here and the
-   whole site updates. This is the LIGHT theme (the default).
+   1. COLOR THEMES: only 3 colors per theme
+   bg = background, ink = text, accent = highlight.
+   Everything else is made by mixing those three, so there are no new colors.
    ========================================================= */
 :root {
   color-scheme: light;
-  --bg: #eef6f6;        /* page background */
-  --surface: #ffffff;   /* cards */
-  --ink: #0a2533;       /* main text */
-  --muted: #4a6674;     /* softer text */
-  --line: #c9dde0;      /* borders */
-  --accent: #0b7f86;    /* highlight color (teal) */
-  --accent-ink: #ffffff;/* text on top of the accent color */
-  --glow: rgba(11, 127, 134, .14);
+  --bg: #eef6f6;
+  --ink: #0a2533;
+  --accent: #0b7f86;
+
+  /* Mixed from the 3 colors above */
+  --surface: var(--bg);                                  /* cards use the page color, separated by a border */
+  --accent-ink: var(--bg);                               /* text on top of accent buttons */
+  --muted: color-mix(in srgb, var(--ink) 70%, var(--bg)); /* softer text */
+  --line: color-mix(in srgb, var(--ink) 20%, var(--bg));  /* borders */
 
   box-sizing: border-box;
-  /* env(safe-area-inset-*) keeps content away from phone notches/bars */
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* DARK theme. It applies automatically if the visitor's device is in dark mode,
-   unless they clicked the button to force light (data-theme="light"). */
+/* DARK theme: follows the device unless the visitor forced light */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #06141e; --surface: #0d2636; --ink: #e4f1f2; --muted: #93b0b8;
-    --line: #1b3d50; --accent: #5eead4; --accent-ink: #04202a; --glow: rgba(94, 234, 212, .16);
+    --bg: #06141e; --ink: #e4f1f2; --accent: #5eead4;
   }
 }
-/* DARK theme when the visitor clicks the Theme button (main.js sets data-theme="dark") */
+/* DARK theme when the visitor clicks the Theme button */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #06141e; --surface: #0d2636; --ink: #e4f1f2; --muted: #93b0b8;
-  --line: #1b3d50; --accent: #5eead4; --accent-ink: #04202a; --glow: rgba(94, 234, 212, .16);
+  --bg: #06141e; --ink: #e4f1f2; --accent: #5eead4;
 }
 
 /* =========================================================
@@ -71,8 +67,7 @@ header {
   position: sticky; /* stays at the top while scrolling */
   top: env(safe-area-inset-top, 0px);
   z-index: 20;      /* higher number = drawn on top of other things */
-  background: color-mix(in srgb, var(--bg) 88%, transparent); /* slightly see-through */
-  backdrop-filter: blur(10px);                                 /* frosted glass effect */
+  background: var(--bg);                                 /* frosted glass effect */
   border-bottom: 1px solid var(--line);
 }
 /* Flexbox lays the items out in a row */
@@ -90,31 +85,13 @@ nav a.l:hover { color: var(--ink); }
    4. HERO
    ========================================================= */
 .hero {
-  position: relative; /* lets the bubbles be positioned inside it */
-  overflow: hidden;   /* hides bubbles that float outside the hero */
+  position: relative;
+  overflow: hidden;
   padding: 6rem 0 5.5rem;
-  background: radial-gradient(ellipse at 80% 0%, var(--glow), transparent 60%);
 }
 /* clamp(min, preferred, max) makes text scale with the screen width */
 .hero h1 { font-size: clamp(2.8rem, 9vw, 6.2rem); font-weight: 800; letter-spacing: -.035em; max-width: 11ch; }
-.hero p.lead { font-size: 1.2rem; max-width: 34rem; color: var(--muted); margin: 1.5rem 0 2rem; }
-
-/* The "Open to OJT" badge */
-.status {
-  display: inline-flex; align-items: center; gap: .6rem;
-  border: 1px solid var(--line); background: var(--surface);
-  border-radius: 999px; padding: .4rem 1rem; font-size: .92rem; margin-bottom: 1.5rem;
-}
-/* The little pulsing dot inside the badge */
-.status i {
-  width: .6rem; height: .6rem; border-radius: 50%; background: var(--accent);
-  animation: pulse 2.4s infinite; /* runs the @keyframes below forever */
-}
-@keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 var(--accent); }
-  70%  { box-shadow: 0 0 0 .6rem transparent; } /* ring grows and fades */
-  100% { box-shadow: 0 0 0 0 transparent; }
-}
+.hero p.lead { font-size: 1.2rem; max-width: 34rem; color: var(--muted); margin: 1.5rem 0 2rem; overflow-wrap: anywhere; }
 
 /* Buttons */
 .btns { display: flex; flex-wrap: wrap; gap: .75rem; }
@@ -167,7 +144,7 @@ section h2 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); letter-spacing: -.02em; ma
 /* Project cards */
 .proj { display: grid; gap: 1.25rem; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 1.75rem; }
-.card.big { border-color: var(--accent); box-shadow: 0 0 0 4px var(--glow); } /* featured card */
+.card.big { border-color: var(--accent); } /* featured card: just an accent border */
 .card h3 { font-size: 1.6rem; margin-bottom: .35rem; }
 .meta { color: var(--muted); font-size: .95rem; margin: 0 0 1rem; }
 .card ul { margin: 0 0 1.2rem; padding-left: 1.15rem; }
@@ -213,6 +190,28 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: .9rem; border-top
   object-fit: contain; 
   background: var(--bg); 
 }
+
+/* ===== BACK TO TOP BUTTON ===== */
+#to-top {
+  position: fixed;            /* stays in the same spot on screen while scrolling */
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); /* stays clear of the phone's bottom bar */
+  z-index: 15;
+  width: 44px; height: 44px;  /* 44px is the recommended minimum size for tapping */
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 700 1.25rem/1 "DM Sans", sans-serif;
+  cursor: pointer;
+
+  /* Hidden by default. visibility:hidden also stops it being tabbed to or tapped while invisible */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s, visibility .25s;
+}
+/* main.js adds the class "show" once the visitor scrolls down */
+#to-top.show { opacity: 1; visibility: visible; }
 
 /* ===== MOBILE FIXES ===== */
 img { max-width: 100%; }                 /* images never grow wider than their box */

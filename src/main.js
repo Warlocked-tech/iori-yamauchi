@@ -97,3 +97,16 @@ copyBtn.addEventListener('click', async () => {
   copyBtn.textContent = 'Copied!';
   setTimeout(() => { copyBtn.textContent = EMAIL; }, 2000);
 });
+
+// ---------- 5) BACK TO TOP BUTTON ----------
+const toTop = document.getElementById('to-top');
+
+// Show the button only after scrolling down 600px. toggle('show', true/false) adds or removes the class.
+addEventListener('scroll', () => {
+  toTop.classList.toggle('show', scrollY > 600);
+}, { passive: true });
+
+// Scroll back to the top when clicked. CSS "scroll-behavior: smooth" makes it animate.
+toTop.addEventListener('click', () => {
+  scrollTo({ top: 0 });
+});
