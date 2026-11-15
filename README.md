@@ -1,4 +1,4 @@
-# Iori Yamauchi — Portfolio
+# Iori Yamauchi | Portfolio
 
 My personal portfolio showcasing my projects, skills, and contact details. I'm a 4th-year BSIT student looking for an OJT placement, and I built this site to show what I've made so far.
 
