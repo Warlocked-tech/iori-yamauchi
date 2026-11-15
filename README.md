@@ -1,30 +1,52 @@
-# My Portfolio (Vite)
+# Iori Yamauchi — Portfolio
 
-## Files at a glance
-- `index.html`   the page structure (all the text content lives here)
-- `src/style.css` all the colors, layout, and animations
-- `src/main.js`   theme toggle, depth gauge, bubbles
-- `package.json`  project info and commands
+My personal portfolio showcasing my projects, skills, and contact details.
 
-## Run it on your computer
-1. Install Node.js (LTS) from https://nodejs.org
-2. Open this folder in VS Code, then open the terminal (Terminal > New Terminal)
-3. Run `npm install` (once)
-4. Run `npm run dev` and open the link it shows (usually http://localhost:5173)
-5. Edit a file, save, and the browser updates by itself
+## Live Site
 
-## Upload to GitHub
-1. Create an empty repo on github.com (New repository, no README)
-2. In the VS Code terminal:
-   git init
-   git add .
-   git commit -m "Portfolio v2"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
-   git push -u origin main
+[Visit my portfolio](https://my-portfolio-rouge-delta-55.vercel.app)
 
-## Deploy on Vercel
-1. Go to vercel.com and log in with GitHub
-2. Add New > Project > import your repo
-3. Framework Preset: Vite (Build: `npm run build`, Output: `dist`)
-4. Click Deploy. Every `git push` after that redeploys automatically.
+## Technologies
+
+- HTML, CSS, and JavaScript
+- Vite for local development and production builds
+- Git and GitHub for version control
+- Vercel for hosting
+
+## Run Locally
+
+Install Node.js and Git, then run:
+
+```bash
+git clone https://github.com/Warlocked-tech/my-portfolio.git
+cd my-portfolio
+npm install
+npm run dev
+```
+
+Open the local URL printed in the terminal.
+
+If PowerShell blocks npm scripts, use `npm.cmd` instead of `npm`.
+
+## Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+The build creates production files in `dist`.
+The preview command serves those files locally.
+
+## What I Learned
+
+- Using Vite to run a local development server and build my website.
+- Using CSS spacing, Flexbox, Grid, and media queries for responsive layouts.
+- Saving changes with Git and publishing updates through GitHub and Vercel.
+- Improving accessibility with keyboard focus, image descriptions, and a skip link.
+- Converting screenshots to WebP to reduce image download sizes.
+
+## Known Limitation
+
+The original AbyssTunes screenshot has limited resolution, so it may
+look less sharp on high-density screens.
