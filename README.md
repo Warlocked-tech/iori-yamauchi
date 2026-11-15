@@ -4,7 +4,7 @@ My personal portfolio showcasing my projects, skills, and contact details. I'm a
 
 ## Live Site
 
-[Visit my portfolio](https://my-portfolio-new-plum.vercel.app/)
+[Visit my portfolio](https://iori-yamauchi.vercel.app/)
 
 ## Features
 
