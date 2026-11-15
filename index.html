@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Makes the page fit phone screens properly. viewport-fit=cover lets it use the full screen on notched phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Iori Yamauchi – Full-Stack Developer</title>
+  <!-- Fonts from Google Fonts (Bricolage Grotesque for headings, DM Sans for body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Vite bundles this CSS file for us -->
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="mark" href="#top">Iori Yamauchi</a>
+        <!-- href="#about" jumps to the element with id="about" -->
+        <a class="l" href="#about">About</a>
+        <a class="l" href="#projects">Projects</a>
+        <a class="l" href="#skills">Skills</a>
+        <a class="l" href="#contact">Contact</a>
+        <!-- main.js listens for clicks on this button (id="theme") -->
+        <button id="theme" type="button" aria-label="Switch between light and dark theme">Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Depth gauge on the right side: main.js updates the number and the bar as you scroll -->
+  <aside class="gauge" aria-hidden="true">
+    <span id="depth">0 m</span>
+    <div class="bar"><b id="fill"></b></div>
+  </aside>
+
+  <main id="top">
+
+    <!-- ===== HERO (first thing visitors see) ===== -->
+    <div class="hero">
+      <div class="wrap">
+        <div class="status"><i></i>Open to OJT opportunities</div>
+        <h1>I build web apps from the database up.</h1>
+        <p class="lead">I’m Iori, a 4th-year BSIT student in Manila. I build full-stack web apps, Android apps and cloud-hosted projects, and I’m looking for an on-the-job training placement where I can ship real work.</p>
+        <div class="btns">
+          <a class="btn p" href="#projects">See my projects</a>
+          <a class="btn" href="mailto:ioriyamauchi24@gmail.com">Email me</a>
+        </div>
+      </div>
+      <!-- The floating bubbles are added here by main.js -->
+      <div id="bubbles"></div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="wrap">
+        <h2>About me</h2>
+        <div class="about">
+          <div>
+            <p>I’m a 4th-year Bachelor of Science in Information Technology student who keeps picking up new tools by building with them. My work so far covers frontend development, cloud infrastructure and full-stack applications.</p>
+            <p>I like projects where the interface and the system behind it both matter: role-based dashboards, real-time sync, and apps with a clear look and feel. I also design in Figma and Canva, so I care about how things look as well as how they run.</p>
+          </div>
+          <!-- <dl> = description list: <dt> is the label, <dd> is the value -->
+          <dl class="facts">
+            <dt>Studying</dt><dd>BSIT at Universidad de Manila, expected 2027</dd>
+            <dt>Coursework</dt><dd>Web Development, App Development</dd>
+            <dt>Based in</dt><dd>Manila, Philippines</dd>
+            <dt>Looking for</dt><dd>OJT in web or full-stack development</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <div class="wrap">
+        <h2>Projects</h2>
+        <div class="proj">
+
+          <!-- Featured project: the extra class "big" gives it the highlighted border -->
+          <article class="card big">
+            <h3>CED-Vault</h3>
+            <p class="meta">Intelligent academic document management system. Capstone project, 2025 to present. Full-stack developer.</p>
+            <ul>
+              <li>Built role-based access control and dynamic dashboards for multi-tier authorization workflows.</li>
+              <li>Added centralized document tracking with status monitoring (Received, For Review, Approved and more) and automated audit-trail logging.</li>
+              <li>Integrated a Python Isolation Forest machine learning module that flags unusual behavior, such as unauthorized bulk data access, and alerts administrators.</li>
+            </ul>
+            <!-- class="tags" turns this list into the small outlined labels -->
+            <ul class="tags"><li>PHP</li><li>Laravel</li><li>Livewire</li><li>Tailwind CSS</li><li>MySQL</li><li>Python</li></ul>
+          </article>
+
+          <!-- "duo" puts the next two cards side by side (stacked on phones) -->
+          <div class="duo">
+            <article class="card">
+              <h3>AbyssTunes</h3>
+              <p class="meta">Mood-based Android music app. Personal project, 2026. Frontend.</p>
+              <ul>
+                <li>Recommends playlists based on the mood the user picks.</li>
+                <li>Designed a deep-sea whale theme in Jetpack Compose, with floating whale and bubble animations.</li>
+                <li>Built multiple screens with NavHost, plus reusable components like SongCard and data models for the music library.</li>
+                <li>Uses my own downloaded songs as the library.</li>
+              </ul>
+              <ul class="tags"><li>Kotlin</li><li>Jetpack Compose</li><li>Android Studio</li><li>Jetpack Navigation</li></ul>
+            </article>
+
+            <article class="card">
+              <h3>Deep Sea Ocean</h3>
+              <p class="meta">Azure-hosted, event-driven web app. Personal project, 2026. Full-stack developer.</p>
+              <ul>
+                <li>Provisioned a Windows Server VM (IoriServer) on Azure IaaS and configured IIS to serve the front end over port 80.</li>
+                <li>Connected Cloud Firestore with the ES6 modular Firebase SDK and onSnapshot listeners, so messages sync in real time across active sessions.</li>
+              </ul>
+              <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Cloud Firestore</li><li>Azure VM</li><li>IIS</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <div class="skills">
+          <div><h3>Frontend</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Laravel</li><li>TailwindCSS</li><li>Responsive design</li></ul></div>
+          <div><h3>Cloud and infrastructure</h3><ul class="tags"><li>Azure IaaS (VMs, NSG rules)</li><li>IIS</li><li>Firebase Cloud Firestore</li></ul></div>
+          <div><h3>Mobile and version control</h3><ul class="tags"><li>Kotlin</li><li>Jetpack Compose</li><li>Git</li><li>GitHub</li><li>VS Code</li></ul></div>
+          <div><h3>Design and multimedia</h3><ul class="tags"><li>Figma</li><li>Canva</li><li>CapCut</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+      <div class="wrap">
+        <h2>Education</h2>
+        <div class="edu">
+          <div>
+            <h3>Bachelor of Science in Information Technology</h3>
+            <p class="meta">Universidad de Manila, Manila, Philippines. Coursework: Web Development, App Development.</p>
+          </div>
+          <strong>Expected 2027</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <h2>Let’s work together this OJT season.</h2>
+        <p class="muted">If your team needs a student developer who can build, deploy and learn fast, send me a message.</p>
+        <div class="links">
+          <!-- mailto: opens the visitor's email app. target="_blank" opens links in a new tab;
+               rel="noopener" is a security best practice for those links -->
+          <a class="btn p" href="mailto:ioriyamauchi24@gmail.com">ioriyamauchi24@gmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/yamauchi-iori-v-441b7334b" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/Warlocked-tech" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 Iori V. Yamauchi. Built in Manila.</div></footer>
+
+  <!-- type="module" lets main.js import other files. Vite handles the rest -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

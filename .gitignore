@@ -1,0 +1,4 @@
+# Folders/files Git should NOT upload to GitHub
+node_modules
+dist
+.DS_Store
