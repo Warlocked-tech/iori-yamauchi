@@ -197,3 +197,21 @@ footer { padding: 2rem 0 3rem; color: var(--muted); font-size: .9rem; border-top
   * { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* Project screenshots: fill the card width with a fixed shape so all cards look even */
+.shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* wide rectangle */
+  object-fit: cover;          /* crops the image to fill the box instead of stretching it */
+  object-position: top;       /* keeps the top of the screenshot visible when cropping */
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-bottom: 1.25rem;
+}
+
+.shot.phone { 
+  aspect-ratio: 4 / 3; 
+  object-fit: contain; 
+  background: var(--bg); 
+}
